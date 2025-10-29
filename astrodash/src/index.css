@@ -9,6 +9,13 @@
 }
 /* Set the theme for the app */
 
-@theme {
+:root {
   --color-primary: #5044e5;
+  --color-primary-light: rgba(80, 68, 229, 0.1);
+  --text-gray-500: #6b7280;
+  --text-gray-700: #374151;
+  --text-gray-900: #111827;
+  --bg-white: #ffffff;
+  --bg-gray-50: #f9fafb;
+  --bg-gray-100: #f3f4f6;
 }

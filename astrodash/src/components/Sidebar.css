@@ -2,25 +2,47 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  min-height: 100vh;
+  background: var(--bg-white);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
   width: 280px;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  color: white;
+  color: var(--text-gray-700);
+  z-index: 900;
+  border-right: 1px solid #e5e7eb;
 }
 
 /* Sidebar Header */
 .sidebar-header {
   padding: 2rem 1.5rem 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid #e5e7eb;
+  background: var(--bg-gray-50);
 }
 
-.sidebar-title {
-  margin: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
+.logo-section {
   text-align: center;
-  color: white;
+}
+
+.logo-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.logo-subtitle {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-gray-500);
+  font-weight: 300;
+  letter-spacing: 0.5px;
 }
 
 /* Navigation Container */
@@ -30,53 +52,100 @@
   padding: 1rem 0;
 }
 
-/* Navigation Link Base Styles */
-.nav-link {
+/* Utility classes for Tailwind-like styling */
+.flex {
   display: flex;
+}
+.items-center {
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.8);
+}
+.gap-3 {
+  gap: 0.75rem;
+}
+.py-3\.5 {
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+}
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.w-full {
+  width: 100%;
+}
+.text-left {
+  text-align: left;
+}
+.min-w-4 {
+  min-width: 1rem;
+}
+.w-5 {
+  width: 1.25rem;
+}
+.hidden {
+  display: none;
+}
+.border-r-4 {
+  border-right: 4px solid;
+}
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+/* Background with primary color and opacity */
+.bg-primary\/10 {
+  background-color: var(--color-primary-light);
+}
+
+/* Media queries for responsive design */
+@media (min-width: 768px) {
+  .md\:px-9 {
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+  }
+  .md\:min-w-64 {
+    min-width: 16rem;
+  }
+  .md\:inline-block {
+    display: inline-block;
+  }
+}
+
+/* Navigation button styles */
+.sidebar-nav button {
+  background: none;
+  border: none;
+  font-family: inherit;
+  color: var(--text-gray-700);
   transition: all 0.3s ease;
   border-radius: 0;
-  position: relative;
-  margin: 0.25rem 0;
 }
 
-/* Navigation Link Hover */
-.nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
-  transform: translateX(5px);
-}
-
-/* Active Navigation Link */
-.nav-link--active {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: white;
-  border-right: 4px solid #ffd700;
-}
-
-.nav-link--active::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background: #ffd700;
+.sidebar-nav button:hover {
+  background-color: var(--bg-gray-100);
+  color: var(--text-gray-900);
 }
 
 /* Icon Styles */
 .nav-icon {
-  width: 20px;
-  height: 20px;
-  filter: brightness(0) invert(1);
+  height: 1.25rem;
+  filter: none;
   transition: transform 0.3s ease;
 }
 
-.nav-link:hover .nav-icon {
+.fav-icon,
+.info-icon {
+  filter: none;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-nav button:hover .nav-icon {
   transform: scale(1.1);
 }
 
@@ -85,6 +154,7 @@
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.5px;
+  color: inherit;
 }
 
 /* Responsive Design */
@@ -97,22 +167,28 @@
     padding: 1rem 0.5rem;
   }
 
-  .sidebar-title {
+  .logo-title {
     font-size: 0.9rem;
     writing-mode: vertical-rl;
   }
 
-  .nav-link {
-    padding: 1rem 0.5rem;
-    justify-content: center;
+  .logo-subtitle {
+    display: none;
   }
 
-  .nav-text {
-    display: none;
+  .sidebar-nav button {
+    padding: 1rem 0.5rem;
+    justify-content: center;
   }
 
   .nav-icon {
     width: 24px;
     height: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    display: none; /* Hide sidebar on very small screens */
   }
 }

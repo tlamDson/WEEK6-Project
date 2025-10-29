@@ -1,55 +1,55 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import { assets } from "../assets/assets";
 import "./Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({ currentView, onViewChange }) => {
+  const handleNavClick = (view) => {
+    onViewChange(view);
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar-header">
-        <h2 className="sidebar-title">Dashboard</h2>
+        <div className="logo-section">
+          <h1 className="logo-title">Recipe Explorer</h1>
+        </div>
       </div>
       <nav className="sidebar-nav">
-        <NavLink
-          end={true}
-          to="/"
-          className={({ isActive }) =>
-            `nav-link ${isActive ? "nav-link--active" : ""}`
-          }
+        <button
+          onClick={() => handleNavClick("home")}
+          className={`flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-64 cursor-pointer w-full text-left ${
+            currentView === "home" && "bg-primary/10 border-r-4 border-primary"
+          }`}
         >
-          <img src={assets.home_icon} alt="Home" className="nav-icon" />
-          <span className="nav-text">Home</span>
-        </NavLink>
+          <img
+            src={assets.home_icon}
+            alt="Home"
+            className="min-w-4 w-5 nav-icon"
+          />
+          <p className="hidden md:inline-block nav-text">Recipe Search</p>
+        </button>
 
-        <NavLink
-          to="/addBlog"
-          className={({ isActive }) =>
-            `nav-link ${isActive ? "nav-link--active" : ""}`
-          }
+        <button
+          onClick={() => handleNavClick("favorites")}
+          className={`flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-64 cursor-pointer w-full text-left ${
+            currentView === "favorites" &&
+            "bg-primary/10 border-r-4 border-primary"
+          }`}
         >
-          <img src={assets.add_icon} alt="Add Blog" className="nav-icon" />
-          <span className="nav-text">Add Blog</span>
-        </NavLink>
+          <span className="min-w-4 w-5 nav-icon fav-icon">❤️</span>
+          <p className="hidden md:inline-block nav-text">Favorite Recipes</p>
+        </button>
 
-        <NavLink
-          to="/listBlog"
-          className={({ isActive }) =>
-            `nav-link ${isActive ? "nav-link--active" : ""}`
-          }
+        <button
+          onClick={() => handleNavClick("apiInfo")}
+          className={`flex items-center gap-3 py-3.5 px-3 md:px-9 md:min-w-64 cursor-pointer w-full text-left ${
+            currentView === "apiInfo" &&
+            "bg-primary/10 border-r-4 border-primary"
+          }`}
         >
-          <img src={assets.list_icon} alt="Blog List" className="nav-icon" />
-          <span className="nav-text">Blog List</span>
-        </NavLink>
-
-        <NavLink
-          to="/comments"
-          className={({ isActive }) =>
-            `nav-link ${isActive ? "nav-link--active" : ""}`
-          }
-        >
-          <img src={assets.comment_icon} alt="Comments" className="nav-icon" />
-          <span className="nav-text">Comments</span>
-        </NavLink>
+          <span className="min-w-4 w-5 nav-icon info-icon">ℹ️</span>
+          <p className="hidden md:inline-block nav-text">API Information</p>
+        </button>
       </nav>
     </div>
   );

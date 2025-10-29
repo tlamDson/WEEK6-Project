@@ -1,0 +1,32 @@
+/* Home.css */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif;
+}
+
+/* Ensure the home container takes full height */
+.home-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Main view container */
+.main-view {
+  margin-left: 280px;
+  min-height: 100vh;
+  background: #f8fafc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-view {
+    margin-left: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-view {
+    margin-left: 0;
+  }
+}
