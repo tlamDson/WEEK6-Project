@@ -3,7 +3,7 @@ import "./TableItems.css";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 
-const TableItems = ({ recipes, onAddToFavorites, favoriteIds = [] }) => {
+const TableItems = ({ recipes, onAddToFavorites, onDeleteRecipe, favoriteIds = [] }) => {
   const navigate = useNavigate();
   //Add funtion to handle navigation
   const handleViewDeatail = (recipeId) => {
@@ -125,8 +125,9 @@ const TableItems = ({ recipes, onAddToFavorites, favoriteIds = [] }) => {
               >
                 Price/Serving {getSortIcon("pricePerServing")}
               </th>
-              <th className="action-header">Action</th>
+              <th className="action-header">Favorite</th>
               <th className="action-header">Details</th>
+              <th className="action-header">Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -192,6 +193,17 @@ const TableItems = ({ recipes, onAddToFavorites, favoriteIds = [] }) => {
                       title="View recipe details"
                     />
                   </div>
+                </td>
+                <td className="recipe-action">
+                  {onDeleteRecipe && (
+                    <button
+                      onClick={() => onDeleteRecipe(recipe.id)}
+                      className="delete-btn"
+                      title="Remove from list"
+                    >
+                      🗑️
+                    </button>
+                  )}
                 </td>
               </tr>
             ))}

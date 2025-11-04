@@ -1,9 +1,11 @@
 .api-info-container {
   max-width: 1200px;
   margin: 0 auto;
+  margin-left: 280px;
   padding: 2rem;
-  background: var(--bg-gray-50);
+  background: rgba(239, 246, 255, 0.3);
   min-height: calc(100vh - 70px);
+  font-family: "Outfit", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .api-info-header {
@@ -47,10 +49,10 @@
 }
 
 .api-overview h3 {
-  color: #2d3748;
+  color: #1f2937;
   font-size: 1.5rem;
   margin: 0 0 1rem 0;
-  border-bottom: 2px solid #667eea;
+  border-bottom: 2px solid var(--color-primary);
   padding-bottom: 0.5rem;
 }
 
@@ -67,19 +69,19 @@
 
 .api-external-link {
   display: inline-block;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--color-primary);
   color: white;
   text-decoration: none;
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .api-external-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .api-characteristics {
@@ -259,6 +261,7 @@
 @media (max-width: 768px) {
   .api-info-container {
     padding: 1rem;
+    margin-left: 80px;
   }
 
   .api-info-title {
@@ -279,6 +282,10 @@
 }
 
 @media (max-width: 480px) {
+  .api-info-container {
+    margin-left: 0;
+  }
+
   .api-info-header {
     padding: 1.5rem;
   }

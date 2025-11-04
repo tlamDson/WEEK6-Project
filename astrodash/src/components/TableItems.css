@@ -3,8 +3,13 @@
   margin: 20px 0;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
   overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.table-container:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 .table-wrapper {
@@ -16,7 +21,7 @@
 .recipes-table {
   width: 100%;
   border-collapse: collapse;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Outfit", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .recipes-table thead {
@@ -182,7 +187,7 @@
 }
 
 .fav-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
+  transform: scale(1.1);
   box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
 }
 
@@ -197,6 +202,34 @@
 
 .fav-btn:disabled {
   opacity: 0.7;
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  background: #dc2626;
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
 }
 
 /* Link Action Cell */
