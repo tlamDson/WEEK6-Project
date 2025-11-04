@@ -48,7 +48,7 @@ const Main = forwardRef(({ onAddToFavorites, favoriteIds = [] }, ref) => {
     try {
       let apiUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${encodeURIComponent(
         query
-      )}&number=5&offset=${offset}&apiKey=${API_KEY}&addRecipeInformation=true&fillIngredients=true`;
+      )}&number=1&offset=${offset}&apiKey=${API_KEY}&addRecipeInformation=true&fillIngredients=true`;
 
       if (filters.healthScore) {
         apiUrl += `&minHealthScore=${filters.healthScore}`;
@@ -150,10 +150,10 @@ const Main = forwardRef(({ onAddToFavorites, favoriteIds = [] }, ref) => {
 
       if (isLoadMore) {
         setDetailedRecipes((prev) => [...prev, ...filteredData]);
-        setCurrentOffset(offset + 5);
+        setCurrentOffset(offset + 0);
       } else {
         setDetailedRecipes(filteredData);
-        setCurrentOffset(5);
+        setCurrentOffset(0);
       }
 
       setLastQuery(query);
@@ -463,7 +463,7 @@ const Main = forwardRef(({ onAddToFavorites, favoriteIds = [] }, ref) => {
                 disabled={loadingMore}
                 className="load-more-btn"
               >
-                {loadingMore ? "Loading..." : "🔄 Load 5 More Recipes"}
+                {loadingMore ? "Loading..." : "🔄 Load 3 More Recipes"}
               </button>
               <p className="load-more-info">
                 Showing {detailedRecipes.length} of {recipe.totalResults} total

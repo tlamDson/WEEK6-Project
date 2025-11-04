@@ -199,6 +199,37 @@
   opacity: 0.7;
 }
 
+/* Link Action Cell */
+.link-action {
+  text-align: center;
+  padding: 15px 12px;
+}
+
+.link-action div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.link-action .link-icon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  filter: grayscale(100%);
+}
+
+.link-action .link-icon:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
+.link-action .link-icon:active {
+  transform: scale(0.95);
+}
+
 /* Empty State */
 .empty-table {
   padding: 60px 20px;

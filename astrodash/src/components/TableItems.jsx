@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import "./TableItems.css";
+import { assets } from "../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 const TableItems = ({ recipes, onAddToFavorites, favoriteIds = [] }) => {
+  const navigate = useNavigate();
+  //Add funtion to handle navigation
+  const handleViewDeatail = (recipeId) => {
+    navigate(`/recipe/${recipeId}`);
+  };
   const [sortConfig, setSortConfig] = useState({
     key: null,
     direction: "asc",
@@ -119,6 +126,7 @@ const TableItems = ({ recipes, onAddToFavorites, favoriteIds = [] }) => {
                 Price/Serving {getSortIcon("pricePerServing")}
               </th>
               <th className="action-header">Action</th>
+              <th className="action-header">Details</th>
             </tr>
           </thead>
           <tbody>
@@ -174,12 +182,22 @@ const TableItems = ({ recipes, onAddToFavorites, favoriteIds = [] }) => {
                     {favoriteIds.includes(recipe.id) ? "✓" : "❤️"}
                   </button>
                 </td>
+                <td className="link-action">
+                  <div>
+                    <img
+                      src={assets.link}
+                      alt="View details"
+                      className="link-icon"
+                      onClick={() => handleViewDeatail(recipe.id)}
+                      title="View recipe details"
+                    />
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-
       {recipes.length === 0 && (
         <div className="empty-table">
           <p>No recipes to display</p>
