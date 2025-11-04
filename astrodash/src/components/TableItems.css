@@ -197,7 +197,13 @@
 
 .fav-btn--added {
   background: #10b981;
-  cursor: not-allowed;
+  cursor: pointer;
+}
+
+.fav-btn--added:hover {
+  background: #059669;
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .fav-btn:disabled {
