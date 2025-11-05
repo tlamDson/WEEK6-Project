@@ -79,7 +79,7 @@ const Home = () => {
     try {
       let apiUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${encodeURIComponent(
         query
-      )}&number=3&offset=${offset}&apiKey=${API_KEY}&addRecipeInformation=true&fillIngredients=true`;
+      )}&number=5&offset=${offset}&apiKey=${API_KEY}&addRecipeInformation=true&fillIngredients=true`;
 
       if (filters.healthScore) {
         apiUrl += `&minHealthScore=${filters.healthScore}`;
