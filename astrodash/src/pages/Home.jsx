@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import TableItems from "../components/TableItems";
+import RecipeCharts from "../components/RecipeCharts";
 import { toast } from "react-toastify";
 import "./Home.css";
 import {
@@ -439,43 +440,6 @@ const Home = () => {
             </div>
           </div>
 
-          {getDataSummary() && (
-            <div className="data-summary-section">
-              <div className="summary-container">
-                <h3 className="summary-title">📊 Search Results Summary</h3>
-                <div className="summary-stats">
-                  <div className="summary-stat">
-                    <div className="stat-icon">📝</div>
-                    <div className="stat-info">
-                      <div className="stat-number">
-                        {getDataSummary().totalRecipes}
-                      </div>
-                      <div className="stat-label">Total Recipes</div>
-                    </div>
-                  </div>
-                  <div className="summary-stat">
-                    <div className="stat-icon">💚</div>
-                    <div className="stat-info">
-                      <div className="stat-number">
-                        {getDataSummary().avgHealthScore}/100
-                      </div>
-                      <div className="stat-label">Avg Health Score</div>
-                    </div>
-                  </div>
-                  <div className="summary-stat">
-                    <div className="stat-icon">⏱️</div>
-                    <div className="stat-info">
-                      <div className="stat-number">
-                        {getDataSummary().avgReadyTime}min
-                      </div>
-                      <div className="stat-label">Avg Cook Time</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
           <div className="results-container">
             {loading && <p className="loading-message">Loading recipes...</p>}
 
@@ -485,14 +449,10 @@ const Home = () => {
               </div>
             )}
 
-            {recipe.totalResults > 0 && (
-              <p className="results-count">
-                Found {recipe.totalResults} recipes
-              </p>
-            )}
-
             {detailedRecipes.length > 0 && !loading && (
               <>
+                <RecipeCharts recipes={detailedRecipes} />
+
                 <TableItems
                   recipes={detailedRecipes}
                   onAddToFavorites={handleAddToFavorites}

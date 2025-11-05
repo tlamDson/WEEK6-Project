@@ -29,10 +29,10 @@ body {
 
 .search-header-section {
   background: white;
-  padding: 3rem 2rem;
+  padding: 1rem 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
-  margin-bottom: 2rem;
+  margin-bottom: 0;
 }
 
 .search-container {
@@ -151,11 +151,10 @@ body {
   justify-content: center;
   align-items: end;
   gap: 1rem;
-  margin-top: 2rem;
-  padding: 1.5rem;
+  margin-top: 1;
+  padding: 1rem;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .filter-group {
@@ -299,7 +298,7 @@ body {
 .results-container {
   background: transparent;
   min-height: 40vh;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
 
 /* Messages */
@@ -475,7 +474,7 @@ body {
   .filter-section {
     grid-template-columns: 1fr;
     gap: 1rem;
-    padding: 1rem;
+    padding: 0.5;
   }
 
   .filter-group {
