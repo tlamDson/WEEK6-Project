@@ -1,6 +1,7 @@
 // RecipeDetail.jsx component structure
 import { useEffect, useState } from "react";
 import { data, useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./RecipeDetail.css";
 import Sidebar from "../components/Sidebar";
 
@@ -15,16 +16,29 @@ const RecipeDetail = ({ recipeId }) => {
     const fetchRecipeDetail = async () => {
       try {
         setLoading(true);
+        toast.info("🔍 Loading recipe details...", {
+          autoClose: 1500,
+        });
         const response = await fetch(
           `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}&includeNutrition=true`
         );
         if (response.ok) {
           const data = await response.json();
           setRecipe(data);
+          toast.success(`✅ Recipe loaded: ${data.title}`, {
+            autoClose: 2000,
+          });
           console.log(data);
+        } else {
+          toast.error("❌ Failed to load recipe details", {
+            autoClose: 3000,
+          });
         }
       } catch (error) {
-        console.error("Error");
+        console.error("Error", error);
+        toast.error("❌ Error loading recipe. Please try again.", {
+          autoClose: 3000,
+        });
       } finally {
         setLoading(false);
       }

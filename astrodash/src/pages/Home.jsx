@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import TableItems from "../components/TableItems";
+import { toast } from "react-toastify";
 import "./Home.css";
 import {
   getFavoriteRecipes,
@@ -90,17 +91,32 @@ const Home = () => {
 
       if (!searchResponse.ok) {
         if (searchResponse.status === 402) {
+          toast.error("⚠️ API quota exceeded! Please try again tomorrow.", {
+            autoClose: 5000,
+          });
           throw new Error(
             "API quota exceeded. Please try again tomorrow or upgrade your plan."
           );
         } else if (searchResponse.status === 401) {
+          toast.error("❌ Invalid API key! Check your configuration.", {
+            autoClose: 5000,
+          });
           throw new Error("Invalid API key. Please check your configuration.");
         } else {
+          toast.error(`❌ Error: ${searchResponse.status}`, {
+            autoClose: 5000,
+          });
           throw new Error(`HTTP error! status: ${searchResponse.status}`);
         }
       }
 
       const searchData = await searchResponse.json();
+
+      if (!isLoadMore) {
+        toast.success(`🎉 Found ${searchData.totalResults} recipes!`, {
+          autoClose: 2000,
+        });
+      }
 
       if (isLoadMore) {
         setRecipe((prev) => ({
@@ -162,6 +178,9 @@ const Home = () => {
       setHasSearched(true);
     } else {
       setError("Please enter at least 2 characters to search");
+      toast.warning("⚠️ Please enter at least 2 characters to search", {
+        autoClose: 2000,
+      });
     }
   };
 
@@ -181,6 +200,9 @@ const Home = () => {
   const applyFilters = () => {
     if (lastQuery && !isApiCallInProgress) {
       fetchRecipes(lastQuery);
+      toast.info("🔍 Applying filters...", {
+        autoClose: 1500,
+      });
     }
   };
 
@@ -189,6 +211,9 @@ const Home = () => {
       servings: "",
       healthScore: "",
       maxPrice: "",
+    });
+    toast.info("🔄 Filters cleared!", {
+      autoClose: 1500,
     });
     if (lastQuery && !isApiCallInProgress) {
       setTimeout(() => {
@@ -275,7 +300,15 @@ const Home = () => {
       const updatedFavorites = addToFavoritesStorage(recipe);
       setFavorites(updatedFavorites);
       setFavoriteIds(updatedFavorites.map((fav) => fav.id));
-      console.log(`Added "${recipe.title}" to favorites!`);
+      toast.success(`✨ "${recipe.title}" added to favorites!`, {
+        position: "top-right",
+        autoClose: 2000,
+      });
+    } else {
+      toast.info(`"${recipe.title}" is already in your favorites!`, {
+        position: "top-right",
+        autoClose: 2000,
+      });
     }
   };
 
@@ -283,6 +316,10 @@ const Home = () => {
     const updatedFavorites = removeFromFavoritesStorage(recipeId);
     setFavorites(updatedFavorites);
     setFavoriteIds(updatedFavorites.map((fav) => fav.id));
+    toast.success(`🗑️ Recipe removed from favorites!`, {
+      position: "top-right",
+      autoClose: 2000,
+    });
   };
 
   return (

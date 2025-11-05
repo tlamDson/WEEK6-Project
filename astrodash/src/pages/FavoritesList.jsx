@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TableItems from "../components/TableItems";
+import { toast } from "react-toastify";
 import "./FavoritesList.css";
 import Sidebar from "../components/Sidebar";
 import {
@@ -36,6 +37,11 @@ const FavoritesList = ({
       const updatedFavorites = removeFromFavoritesStorage(recipeId);
       setFavorites(updatedFavorites);
     }
+
+    toast.success(`🗑️ "${recipe.title}" removed from favorites!`, {
+      position: "top-right",
+      autoClose: 2000,
+    });
   };
 
   // Ensure favorites is always an array
