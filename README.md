@@ -31,6 +31,8 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [x] List anything else that you added to improve the site's functionality!
+      -Hide and display charts
+- Provide react-router through the sidebar
 
 ## Video Walkthrough
 
